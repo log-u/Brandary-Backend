@@ -4,6 +4,5 @@ public record UserResDto(
         Long userId,
         String nickname,
         String email,
-        String profileImageUrl,
-        String thumbnailImageUrl
+        String profileImageUrl
 ) {}

@@ -29,8 +29,7 @@ public class AuthController {
                         userInfo.oauthId(),
                         userInfo.kakaoAccount().email(),
                         userInfo.kakaoAccount().profile().nickname(),
-                        userInfo.kakaoAccount().profile().profileImageUrl(),
-                        userInfo.kakaoAccount().profile().thumbnailImageUrl()
+                        userInfo.kakaoAccount().profile().profileImageUrl()
                 )
         );
     }

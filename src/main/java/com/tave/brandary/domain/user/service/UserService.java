@@ -23,7 +23,6 @@ public class UserService {
                 .email(dto.email())
                 .nickname(dto.nickname())
                 .profileImageUrl(dto.profileImageUrl())
-                .thumbnailImageUrl(dto.thumbnailImageUrl())
                 .build();
 
         userRepository.save(user);
@@ -31,8 +30,7 @@ public class UserService {
                 user.getId(),
                 user.getNickname(),
                 user.getEmail(),
-                user.getProfileImageUrl(),
-                user.getThumbnailImageUrl());
+                user.getProfileImageUrl());
     }
 
     public Optional<User> findByOauthId(String oauthId) {

@@ -38,17 +38,13 @@ public class User extends BaseEntity {
     @Column(name = "profile_image_url")
     private String profileImageUrl;
 
-    @Column(name = "thumbnail_image_url")
-    private String thumbnailImageUrl;
-
     @Builder
-    public User(OAuthProvider oauthProvider, String oauthId, String email,String nickname,
-                String profileImageUrl, String thumbnailImageUrl) {
+    public User(OAuthProvider oauthProvider, String oauthId, String email,
+                String nickname, String profileImageUrl) {
         this.oauthProvider = oauthProvider;
         this.oauthId = oauthId;
         this.email = email;
         this.nickname = nickname;
         this.profileImageUrl = profileImageUrl;
-        this.thumbnailImageUrl = thumbnailImageUrl;
     }
 }

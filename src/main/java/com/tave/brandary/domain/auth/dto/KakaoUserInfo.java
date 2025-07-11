@@ -17,10 +17,7 @@ public record KakaoUserInfo(
                 String nickname,
 
                 @JsonProperty("profile_image_url")
-                String profileImageUrl,
-
-                @JsonProperty("thumbnail_image_url")
-                String thumbnailImageUrl
+                String profileImageUrl
         ) {
         }
     }
