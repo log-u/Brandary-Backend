@@ -2,6 +2,7 @@ package com.tave.brandary.domain.user.entity;
 
 import com.tave.brandary.global.BaseEntity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
@@ -26,6 +27,7 @@ public class User extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String oauthId;
 
+    @Email
     private String email;
 
     @NotBlank
@@ -33,11 +35,20 @@ public class User extends BaseEntity {
     @Size(min = 2, max = 20)
     private String nickname;
 
+    @Column(name = "profile_image_url")
+    private String profileImageUrl;
+
+    @Column(name = "thumbnail_image_url")
+    private String thumbnailImageUrl;
+
     @Builder
-    public User(OAuthProvider oauthProvider, String oauthId, String email,String nickname) {
+    public User(OAuthProvider oauthProvider, String oauthId, String email,String nickname,
+                String profileImageUrl, String thumbnailImageUrl) {
         this.oauthProvider = oauthProvider;
         this.oauthId = oauthId;
         this.email = email;
         this.nickname = nickname;
+        this.profileImageUrl = profileImageUrl;
+        this.thumbnailImageUrl = thumbnailImageUrl;
     }
 }

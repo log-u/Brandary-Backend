@@ -28,7 +28,9 @@ public class AuthController {
                 new UserSignUpReqDto(
                         userInfo.oauthId(),
                         userInfo.kakaoAccount().email(),
-                        userInfo.kakaoAccount().profile().nickname()
+                        userInfo.kakaoAccount().profile().nickname(),
+                        userInfo.kakaoAccount().profile().profileImageUrl(),
+                        userInfo.kakaoAccount().profile().thumbnailImageUrl()
                 )
         );
     }

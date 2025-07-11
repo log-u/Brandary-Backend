@@ -13,6 +13,15 @@ public record KakaoUserInfo(
             Profile profile,
             String email
     ) {
-        public record Profile(String nickname) {}
+        public record Profile(
+                String nickname,
+
+                @JsonProperty("profile_image_url")
+                String profileImageUrl,
+
+                @JsonProperty("thumbnail_image_url")
+                String thumbnailImageUrl
+        ) {
+        }
     }
 }
