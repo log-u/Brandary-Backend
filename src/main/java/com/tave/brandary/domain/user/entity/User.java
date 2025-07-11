@@ -26,15 +26,18 @@ public class User extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String oauthId;
 
+    private String email;
+
     @NotBlank
     @Column(nullable = false, unique = true)
     @Size(min = 2, max = 20)
     private String nickname;
 
     @Builder
-    public User(OAuthProvider oauthProvider, String oauthId, String nickname) {
+    public User(OAuthProvider oauthProvider, String oauthId, String email,String nickname) {
         this.oauthProvider = oauthProvider;
         this.oauthId = oauthId;
+        this.email = email;
         this.nickname = nickname;
     }
 }
