@@ -1,5 +1,6 @@
 package com.tave.brandary.domain.auth.service;
 
+import com.tave.brandary.domain.auth.client.GoogleApiClient;
 import com.tave.brandary.domain.auth.client.KakaoApiClient;
 import com.tave.brandary.domain.auth.dto.LoginResDto;
 import com.tave.brandary.domain.auth.dto.SocialLoginReqDto;
@@ -19,7 +20,7 @@ public class AuthService {
 
     private final KakaoApiClient kakaoApiClient;
 //    private final NaverApiClient naverApiClient;
-//    private final GoogleApiClient googleApiClient;
+    private final GoogleApiClient googleApiClient;
     private final UserRepository userRepository;
     private final JwtService jwtService;
 
@@ -27,7 +28,7 @@ public class AuthService {
         SocialUserInfo userInfo = switch (request.provider()) {
             case KAKAO -> kakaoApiClient.getUserInfoByCode(request.code());
 //            case NAVER -> naverApiClient.getUserInfoByCode(request.getCode());
-//            case GOOGLE -> googleApiClient.getUserInfoByCode(request.getCode());
+            case GOOGLE -> googleApiClient.getUserInfoByCode(request.code());
             default -> throw new IllegalStateException("Unexpected value: " + request.provider());
         };
 

@@ -1,0 +1,54 @@
+package com.tave.brandary.domain.auth.client;
+
+import com.tave.brandary.domain.auth.dto.GoogleTokenResponse;
+import com.tave.brandary.domain.auth.dto.GoogleUserResponse;
+import com.tave.brandary.domain.auth.dto.SocialUserInfo;
+import com.tave.brandary.global.oauth.GoogleOauthProperties;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.client.WebClient;
+
+@Component
+@RequiredArgsConstructor
+public class GoogleApiClient {
+
+    private final WebClient webClient = WebClient.builder().build();
+    private final GoogleOauthProperties googleOauthProperties;
+
+    public SocialUserInfo getUserInfoByCode(String code) {
+        String accessToken = getAccessToken(code);
+        return getUserInfo(accessToken);
+    }
+
+    private String getAccessToken(String code) {
+        return webClient.post()
+                .uri("https://oauth2.googleapis.com/token")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .bodyValue("grant_type=authorization_code" +
+                        "&client_id=" + googleOauthProperties.getClientId() +
+                        "&client_secret=" + googleOauthProperties.getClientSecret() +
+                        "&redirect_uri=" + googleOauthProperties.getRedirectUri() +
+                        "&code=" + code)
+                .retrieve()
+                .bodyToMono(GoogleTokenResponse.class)
+                .map(GoogleTokenResponse::accessToken)
+                .block();
+    }
+
+    private SocialUserInfo getUserInfo(String accessToken) {
+        GoogleUserResponse response = webClient.get()
+                .uri("https://www.googleapis.com/oauth2/v2/userinfo")
+                .headers(h -> h.setBearerAuth(accessToken))
+                .retrieve()
+                .bodyToMono(GoogleUserResponse.class)
+                .block();
+
+        return new SocialUserInfo(
+                response.id(),
+                response.email(),
+                response.name(),
+                response.picture()
+        );
+    }
+}
