@@ -22,10 +22,10 @@ public class User extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private OAuthProvider oauthProvider;
+    private SocialProvider socialProvider;
 
     @Column(nullable = false, unique = true)
-    private String oauthId;
+    private String socialId;
 
     @Email
     private String email;
@@ -39,10 +39,10 @@ public class User extends BaseEntity {
     private String profileImageUrl;
 
     @Builder
-    public User(OAuthProvider oauthProvider, String oauthId, String email,
+    public User(SocialProvider socialProvider, String socialId, String email,
                 String nickname, String profileImageUrl) {
-        this.oauthProvider = oauthProvider;
-        this.oauthId = oauthId;
+        this.socialProvider = socialProvider;
+        this.socialId = socialId;
         this.email = email;
         this.nickname = nickname;
         this.profileImageUrl = profileImageUrl;
