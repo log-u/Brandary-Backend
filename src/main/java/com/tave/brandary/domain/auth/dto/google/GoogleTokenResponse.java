@@ -1,4 +1,4 @@
-package com.tave.brandary.domain.auth.dto;
+package com.tave.brandary.domain.auth.dto.google;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

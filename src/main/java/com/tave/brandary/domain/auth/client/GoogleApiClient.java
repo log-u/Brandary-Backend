@@ -1,7 +1,7 @@
 package com.tave.brandary.domain.auth.client;
 
-import com.tave.brandary.domain.auth.dto.GoogleTokenResponse;
-import com.tave.brandary.domain.auth.dto.GoogleUserResponse;
+import com.tave.brandary.domain.auth.dto.google.GoogleTokenResponse;
+import com.tave.brandary.domain.auth.dto.google.GoogleUserResponse;
 import com.tave.brandary.domain.auth.dto.SocialUserInfo;
 import com.tave.brandary.global.oauth.GoogleOauthProperties;
 import lombok.RequiredArgsConstructor;

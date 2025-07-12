@@ -1,7 +1,7 @@
 package com.tave.brandary.domain.auth.client;
 
-import com.tave.brandary.domain.auth.dto.KakaoTokenResponse;
-import com.tave.brandary.domain.auth.dto.KakaoUserResponse;
+import com.tave.brandary.domain.auth.dto.kakao.KakaoTokenResponse;
+import com.tave.brandary.domain.auth.dto.kakao.KakaoUserResponse;
 import com.tave.brandary.domain.auth.dto.SocialUserInfo;
 import com.tave.brandary.global.oauth.KakaoOauthProperties;
 import lombok.RequiredArgsConstructor;
